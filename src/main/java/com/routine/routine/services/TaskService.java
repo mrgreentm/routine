@@ -4,7 +4,7 @@ import com.routine.routine.entities.TaskEntity;
 import com.routine.routine.models.TaskRequestDTO;
 import com.routine.routine.models.TaskResponseDTO;
 import com.routine.routine.repositories.TaskRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -12,13 +12,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class TaskService {
     private final TaskRepository taskRepository;
-
-    @Autowired
-    public TaskService(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
-    }
 
     public TaskResponseDTO createTask(TaskRequestDTO taskRequestDTO) {
         TaskResponseDTO taskResponseDTO = buildResponse(taskRequestDTO);
