@@ -36,6 +36,9 @@ public class TaskService {
         taskRepository.save(task);
         return task;
     }
+    public void deleteTask(Long id) {
+        taskRepository.deleteById(id);
+    }
     private TaskResponseDTO buildResponse(TaskRequestDTO requestDTO) {
         return TaskResponseDTO
                 .builder()

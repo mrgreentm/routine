@@ -24,12 +24,16 @@ public class TaskController {
     public ResponseEntity<TaskResponseDTO> createTask(@RequestBody TaskRequestDTO task) {
         return ResponseEntity.ok(taskService.createTask(task));
     }
-    @PatchMapping("/task/{id}")
+    @PutMapping("/task/{id}")
     public ResponseEntity<TaskEntity> changeStatusTask(
             @PathVariable Long id,
             @RequestBody ChangeTaskRequestDTO task
     ) {
         return ResponseEntity.ok(taskService.changeStatusTask(id, task));
+    }
+    @DeleteMapping("/task/{id}")
+    public void deleteTask(@PathVariable Long id) {
+        taskService.deleteTask(id);
     }
 
 }
