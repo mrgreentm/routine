@@ -1,6 +1,7 @@
 package com.routine.routine.services;
 
 import com.routine.routine.entities.TaskEntity;
+import com.routine.routine.models.ChangeTaskRequestDTO;
 import com.routine.routine.models.TaskRequestDTO;
 import com.routine.routine.models.TaskResponseDTO;
 import com.routine.routine.repositories.TaskRepository;
@@ -27,6 +28,13 @@ public class TaskService {
     }
     public List<TaskEntity> getAllTasks() {
         return taskRepository.findAll();
+    }
+    public TaskEntity changeStatusTask(Long id, ChangeTaskRequestDTO changeTaskRequestDTO) {
+        TaskEntity task = taskRepository.getReferenceById(id);
+        task.setStatus(changeTaskRequestDTO.getStatus());
+        task.setName(changeTaskRequestDTO.getName());
+        taskRepository.save(task);
+        return task;
     }
     private TaskResponseDTO buildResponse(TaskRequestDTO requestDTO) {
         return TaskResponseDTO

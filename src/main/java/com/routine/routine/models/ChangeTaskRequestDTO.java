@@ -1,12 +1,9 @@
 package com.routine.routine.models;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
-public class TaskResponseDTO {
+public class ChangeTaskRequestDTO {
     private String name;
     private Boolean status;
-    private String createdAt;
 }
